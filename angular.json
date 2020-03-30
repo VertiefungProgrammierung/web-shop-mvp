@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "web-shop-mvp": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "web-shop-mvp"
+    }
+  },
+  "defaultProject": "web-shop-mvp",
+  "cli": {
+    "analytics": "9ccef956-1d9d-4bc2-8e92-8f36facda281"
+  }
 }
