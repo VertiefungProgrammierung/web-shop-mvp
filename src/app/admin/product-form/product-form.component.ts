@@ -15,7 +15,7 @@ export class ProductFormComponent implements OnInit {
     title: new FormControl(''),
     price: new FormControl(''),
     category: new FormControl(''),
-    iamgeUrl: new FormControl(''),
+    imageUrl: new FormControl(''),
   });
 
   categories$: Observable<any[]>;
