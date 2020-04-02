@@ -18,10 +18,10 @@ user$: Observable<firebase.User>;
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
-    this.auth.auth.signInWithRedirect( new firebase.auth.GoogleAuthProvider() );
+    this.auth.signInWithRedirect( new firebase.auth.GoogleAuthProvider() );
   }
 
   logout() {
-this.auth.auth.signOut();
+this.auth.signOut();
   }
 }

@@ -21,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
-import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
     OrderSuccessComponent,
     OrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +50,9 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       { path: 'my/orders', component: OrdersComponent, canActivate: [AuthGuardService] },
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService ] },
+      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService ] },
     ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -59,7 +62,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
     AuthService,
     AuthGuardService,
     UserService,
-    AdminAuthGuardService
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
