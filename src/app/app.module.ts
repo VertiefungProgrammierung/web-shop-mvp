@@ -23,6 +23,9 @@ import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
+import { FormsModule} from '@angular/forms';
+import { ProductService } from './product.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { CategoryService } from './category.service';
     ProductFormComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -62,7 +66,8 @@ import { CategoryService } from './category.service';
     AuthService,
     AuthGuardService,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
