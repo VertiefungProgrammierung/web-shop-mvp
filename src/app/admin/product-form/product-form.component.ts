@@ -3,7 +3,9 @@ import { CategoryService } from 'src/app/category.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { ProductService } from 'src/app/product.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
+
 
 
 @Component({
@@ -15,12 +17,16 @@ export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any[]>;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  product = {};
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService ) {
     this.categories$ = categoryService.getCategories();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) { this.product = this.productService.get(id); }
   }
 
 productForm = new FormGroup({
@@ -30,7 +36,6 @@ productForm = new FormGroup({
     imageUrl: new FormControl('', [Validators.required,
       Validators.pattern(this.urlRegex)]),
   });
-
 
 get title() {
   return this.productForm.get('title');
