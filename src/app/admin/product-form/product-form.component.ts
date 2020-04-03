@@ -3,7 +3,8 @@ import { CategoryService } from 'src/app/category.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { ProductService } from 'src/app/product.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { urlValidator } from '../../validators/url-validator';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-product-form',
@@ -13,22 +14,23 @@ import { urlValidator } from '../../validators/url-validator';
 export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any[]>;
-  productForm: FormGroup;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
-  constructor( categoryService: CategoryService, private productService: ProductService ) {
+  constructor(
+    private router: Router,
+    private categoryService: CategoryService,
+    private productService: ProductService ) {
     this.categories$ = categoryService.getCategories();
-    this.productForm = this.createFormGroup();
   }
-createFormGroup() {
-  return new FormGroup({
+
+productForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
     category: new FormControl('', [Validators.required]),
     imageUrl: new FormControl('', [Validators.required,
       Validators.pattern(this.urlRegex)]),
   });
-}
+
 
 get title() {
   return this.productForm.get('title');
@@ -51,8 +53,8 @@ revert() {
 }
 
   save() {
-    //this.productService.create(this.productForm.value);
-    console.log(this.productForm.value);
+    this.productService.create(this.productForm.value);
+    this.router.navigate(['/admin/products']);
   }
 
   ngOnInit(): void {
