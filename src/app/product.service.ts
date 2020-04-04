@@ -11,7 +11,6 @@ export class ProductService {
   productRefObject: AngularFireObject<any>;
 
   constructor( private db: AngularFireDatabase ) {
-    this.productRefList = db.list('/products');
    }
 
   create(product) {
@@ -19,6 +18,7 @@ export class ProductService {
   }
 
   getAll() {
+  this.productRefList = this.db.list('/products');
   return this.productRefList.snapshotChanges().pipe(
     map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -33,5 +33,9 @@ export class ProductService {
        ({ key: changes.payload.key, ...changes.payload.val() })
     )
   );
+  }
+
+  update(productId, product) {
+    return this.db.object('/products/' + productId).update(product);
   }
 }

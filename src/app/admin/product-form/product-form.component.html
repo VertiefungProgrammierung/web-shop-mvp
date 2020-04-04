@@ -3,7 +3,7 @@
         <form [formGroup]="productForm" (ngSubmit)="save()">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input formControlName="title" type="text" [(ngModel)]="product.title" class="form-control">
+                <input formControlName="title" type="text" [(ngModel)]="product.title" class="form-control" *ngIf="product">
                 <div *ngIf="title.touched && title.hasError('required') && title.invalid" class="alert alert-danger" >
                     Title is required
                 </div>
@@ -44,10 +44,10 @@
     </div>
     <div class="col-mid-6">
         <div class="card" style="width: 20rem">
-            <img [src]="product.imageUrl" class="card-img-top">
+            <img [src]="product.imageUrl" class="card-img-top" *ngIf="product.imageUrl">
             <div class="card-body">
               <h5 class="card-title">{{ product.title }}</h5>
-              <p class="card-text">{{ product.price }}</p>
+              <p class="card-text">{{ product.price | currency:'EUR':true }}</p>
             </div>
           </div>
     </div>

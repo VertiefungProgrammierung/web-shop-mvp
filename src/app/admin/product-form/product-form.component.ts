@@ -14,6 +14,7 @@ import { take } from 'rxjs/operators';
 })
 export class ProductFormComponent implements OnInit {
 
+  id;
   categories$: Observable<any[]>;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   product: { title: '', price: '', category: '', imageUrl: '' };
@@ -24,8 +25,8 @@ export class ProductFormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService ) {
     this.categories$ = categoryService.getCategories();
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) { this.productService.get(id).subscribe(p => this.product = p); }
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) { this.productService.get(this.id).subscribe(p => this.product = p); }
   }
 
 productForm = new FormGroup({
@@ -57,7 +58,7 @@ revert() {
 }
 
   save() {
-    this.productService.create(this.productForm.value);
+    if (this.id) { this.productService.update(this.id, this.product); } else { this.productService.create(this.product); }
     this.router.navigate(['/admin/products']);
   }
 
