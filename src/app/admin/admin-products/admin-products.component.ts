@@ -14,20 +14,19 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
 products: Product[];
 subscription: Subscription;
-filteredProducts: Product[];
 tableResource: DataTableResource<Product>;
 items: Product[] = [];
 itemCount: number;
 
   constructor( private productService: ProductService ) {
     this.subscription = this.productService.getAll().subscribe(p => {
-      this.filteredProducts = this.products = p;
+      this.products = p;
       this.initializeTable(this.products);
     });
    }
 
 private initializeTable(products: Product[]) {
-  this.tableResource = new DataTableResource(this.products);
+  this.tableResource = new DataTableResource(products);
   this.tableResource.query({ offset: 0 })
     .then(items => this.items = items);
   this.tableResource.count()
@@ -47,9 +46,10 @@ reloadItems(params) {
   }
 
   filter(query: string) {
-    this.filteredProducts = (query) ?
+    const filteredProducts = (query) ?
     this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
     this.products;
+    this.initializeTable(filteredProducts);
   }
 
 }
