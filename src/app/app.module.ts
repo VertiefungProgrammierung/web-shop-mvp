@@ -25,6 +25,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataTableModule } from 'angular7-data-table';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductFormComponent
   ],
   imports: [
+    DataTableModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
