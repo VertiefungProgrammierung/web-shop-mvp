@@ -53,8 +53,11 @@ get imageUrl() {
   return this.productForm.get('imageUrl');
 }
 
-revert() {
-  this.productForm.reset();
+delete() {
+  if (!confirm('Are you sure you want to delete this product?')) { return; }
+  this.productService.delete(this.id);
+  this.router.navigate(['/admin/products']);
+
 }
 
   save() {
