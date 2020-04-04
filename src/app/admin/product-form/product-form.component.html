@@ -3,7 +3,7 @@
         <form [formGroup]="productForm" (ngSubmit)="save()">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input formControlName="title"type="text" class="form-control">
+                <input formControlName="title" type="text" [(ngModel)]="product.title" class="form-control">
                 <div *ngIf="title.touched && title.hasError('required') && title.invalid" class="alert alert-danger" >
                     Title is required
                 </div>
@@ -12,7 +12,7 @@
                 <label for="price">Price</label>
                 <div class="input-group-prepend">
                     <span class="input-group-text">€</span>
-                    <input formControlName="price" id="price" type="number" class="form-control">
+                    <input formControlName="price" id="price" [(ngModel)]="product.price"  type="number" class="form-control">
                 </div>
                 <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
                     <div *ngIf="price.errors.required">Price is required</div>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select formControlName="category" id="category" class="form-control">
+                <select formControlName="category" id="category" [(ngModel)]="product.category"  class="form-control">
                     <div *ngIf="category.touched && category.hasError('required') && category.invalid" class="alert alert-danger">
                         Category is required
                     </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="imageUrl">Image URL</label>
-                <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
+                <input formControlName="imageUrl" id="imageUrl" [(ngModel)]="product.imageUrl"  type="text" class="form-control">
             </div>
             <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
                 <div *ngIf="imageUrl.errors.required" >Image URL is required</div>
@@ -44,10 +44,10 @@
     </div>
     <div class="col-mid-6">
         <div class="card" style="width: 20rem">
-            <img [src]="imageUrl" class="card-img-top">
+            <img [src]="product.imageUrl" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title">{{ title }}</h5>
-              <p class="card-text">{{ price }}</p>
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">{{ product.price }}</p>
             </div>
           </div>
     </div>

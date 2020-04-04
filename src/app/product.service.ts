@@ -27,7 +27,7 @@ export class ProductService {
   }
 
   get( productId ) {
-  this.productRefObject = this.db.object('/products/');
+  this.productRefObject = this.db.object('/products/' + productId);
   return this.productRefObject.snapshotChanges().pipe(
     map(changes =>
        ({ key: changes.payload.key, ...changes.payload.val() })

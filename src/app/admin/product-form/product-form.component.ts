@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any[]>;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  product: {};
+  product: { title: '', price: '', category: '', imageUrl: '' };
 
   constructor(
     private router: Router,
