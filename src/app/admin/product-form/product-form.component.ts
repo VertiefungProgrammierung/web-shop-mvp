@@ -7,7 +7,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 
-
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -17,7 +16,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$: Observable<any[]>;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  product = {};
+  product: {};
 
   constructor(
     private router: Router,
@@ -26,7 +25,7 @@ export class ProductFormComponent implements OnInit {
     private productService: ProductService ) {
     this.categories$ = categoryService.getCategories();
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) { this.product = this.productService.get(id); }
+    if (id) { this.productService.get(id).subscribe(p => this.product = p); }
   }
 
 productForm = new FormGroup({
