@@ -11,12 +11,12 @@ export class CategoryService {
 
   constructor( private db: AngularFireDatabase ) { }
 
-  getCategories() {
+  getAll() {
     this.categoryRefList = this.db.list('/categories', ref => ref.orderByChild('name'));
     return this.categoryRefList.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
-    );;
+    );
   }
 }
