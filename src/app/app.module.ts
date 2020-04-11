@@ -48,7 +48,7 @@ import { DataTableModule } from 'angular7-data-table';
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'products', component: ProductsComponent },
