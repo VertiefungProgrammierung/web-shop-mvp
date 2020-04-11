@@ -26,6 +26,7 @@ import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule } from 'angular7-data-table';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DataTableModule } from 'angular7-data-table';
     OrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
   ],
   imports: [
     DataTableModule,
