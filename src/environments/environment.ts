@@ -7,7 +7,7 @@ export const environment = {
   firebase: {
     apiKey: 'AIzaSyCogQzGtQQ3izNJj4CbwhtYSaxoc9mdoTw',
     authDomain: 'web-shop-mvp.firebaseapp.com',
-    databaseURL: 'https://web-shop-mvp.firebaseio.com',
+    databaseURL: 'https://web-shop-mvp.firebaseio.com/',
     projectId: 'web-shop-mvp',
     storageBucket: 'web-shop-mvp.appspot.com',
     messagingSenderId: '511957137111',
