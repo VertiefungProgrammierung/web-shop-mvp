@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web-shop-mvp": {
+    "web-shop-sap-mvp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web-shop-mvp",
+            "outputPath": "dist/web-shop-sap-mvp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web-shop-mvp:build"
+            "browserTarget": "web-shop-sap-mvp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "web-shop-mvp:build:production"
+              "browserTarget": "web-shop-sap-mvp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web-shop-mvp:build"
+            "browserTarget": "web-shop-sap-mvp:build"
           }
         },
         "test": {
@@ -110,18 +110,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "web-shop-mvp:serve"
+            "devServerTarget": "web-shop-sap-mvp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-shop-mvp:serve:production"
+              "devServerTarget": "web-shop-sap-mvp:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "web-shop-mvp",
+  "defaultProject": "web-shop-sap-mvp",
   "cli": {
     "analytics": "9ccef956-1d9d-4bc2-8e92-8f36facda281"
   }
