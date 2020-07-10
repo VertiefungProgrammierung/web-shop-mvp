@@ -8,13 +8,14 @@ import { CategoryService } from 'src/app/category.service';
 })
 export class ProductFilterComponent implements OnInit {
 
-  categories$;
+  categories;
   @Input('category') category;
 
   constructor(
     categoryService: CategoryService,
     ) {
-      this.categories$ = categoryService.getAll();
+      this.categories = categoryService.getAll();
+      console.log('Cat result: ', this.categories);
     }
 
   ngOnInit(): void {

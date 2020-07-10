@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductFormComponent implements OnInit {
 
   id;
-  categories$: Observable<any[]>;
+  categories;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   product = { title: '', price: '', category: '', imageUrl: '' };
 
@@ -23,7 +23,7 @@ export class ProductFormComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService ) {
-    this.categories$ = categoryService.getAll();
+    this.categories = categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) { this.productService.get(this.id).subscribe(p => this.product = p); }
   }

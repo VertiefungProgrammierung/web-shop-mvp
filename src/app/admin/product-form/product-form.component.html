@@ -25,7 +25,7 @@
                     <div *ngIf="category.touched && category.hasError('required') && category.invalid" class="alert alert-danger">
                         Category is required
                     </div>
-                    <option *ngFor="let c of categories$ | async" [value]="c.key">
+                    <option *ngFor="let c of categories | async" [value]="c.key">
                         {{ c.name }}
                     </option>
                 </select>
