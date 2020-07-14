@@ -6,9 +6,13 @@
         routerLink="/"
         >
         All Categories</a>
-        <a 
->
-            {{ categories }}
+        <a  
+        *ngFor="let c of categories.categories" 
+        routerLink="/"
+        [queryParams]="{category: c}"
+        class="list-group-item list-group-item-action"
+        [class.active]="category === c">
+            {{ c }}
         </a>
     </div>
 </div>

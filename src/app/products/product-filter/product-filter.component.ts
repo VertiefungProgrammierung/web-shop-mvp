@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from 'src/app/category.service';
+import { Categories } from 'src/app/models/categories';
 
 @Component({
   selector: 'product-filter',
@@ -8,14 +9,14 @@ import { CategoryService } from 'src/app/category.service';
 })
 export class ProductFilterComponent implements OnInit {
 
-  categories;
+  categories: Categories;
   @Input('category') category;
 
   constructor(
     categoryService: CategoryService,
     ) {
-      this.categories = categoryService.getAll();
-      console.log('Cat: ', this.categories);
+      categoryService.getAll().pipe().subscribe(data =>
+        console.log('Cat ', this.categories = data));
     }
 
   ngOnInit(): void {

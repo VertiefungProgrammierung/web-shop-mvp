@@ -10,15 +10,11 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class CategoryService {
 
-  categoryRefList: Observable<any>;
+  categoryRefList;
 
   constructor( private http: HttpClient ) { }
 
    getAll() {
-     this.categoryRefList = this.http.get<any>('https://webshopsapp2002529677trial.hanatrial.ondemand.com/WebShopSap/CategoriesRFC');
-     return this.categoryRefList
-    .pipe(map(data => {
-      data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    }));
+  return this.http.get<Categories>('https://webshopsapp2002529677trial.hanatrial.ondemand.com/WebShopSap/CategoriesRFC');
   }
 }
