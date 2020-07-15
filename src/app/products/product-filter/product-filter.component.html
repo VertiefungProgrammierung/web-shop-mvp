@@ -9,9 +9,9 @@
         <a  
         *ngFor="let c of categories.categories | keyvalue" 
         routerLink="/"
-        [queryParams]="{category: c}"
+        [queryParams]="{category: c.key}"
         class="list-group-item list-group-item-action"
-        [class.active]="category === c">
+        [class.active]="category === c.key">
             {{ c.value }}
         </a>
     </div>

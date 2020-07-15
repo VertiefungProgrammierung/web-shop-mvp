@@ -3,7 +3,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Categories } from './models/categories';
-import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
