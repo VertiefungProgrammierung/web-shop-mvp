@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Product } from './models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,11 @@ export class ProductService {
   productRefList: AngularFireList<any>;
   productRefObject: AngularFireObject<any>;
 
-  constructor( private db: AngularFireDatabase ) {
+  constructor( private db: AngularFireDatabase, private httpClient: HttpClient ) {
    }
 
   create(product) {
-    return this.db.list('/products').push(product);
+    return this.httpClient.post<Product>('https://webshopsapp2002529677trial.hanatrial.ondemand.com/WebShopSap/ProductsRFC', product);
   }
 
   getAll() {

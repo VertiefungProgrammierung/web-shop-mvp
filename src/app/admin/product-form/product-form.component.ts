@@ -60,7 +60,7 @@ delete() {
 }
 
   save() {
-    if (this.id) { this.productService.update(this.id, this.product); } else { this.productService.create(this.product); }
+     this.productService.create(this.product);
     this.router.navigate(['/admin/products']);
   }
 

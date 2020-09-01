@@ -14,6 +14,6 @@ export class CategoryService {
   constructor( private http: HttpClient ) { }
 
    getAll() {
-  return this.http.get<Categories>('https://webshopsapp2002529677trial.hanatrial.ondemand.com/WebShopSap/CategoriesRFC');
+  return this.http.get<Categories>('https://webshopsapmvpp2002529677trial.hanatrial.ondemand.com/Web-Shop-SAP-Mvp/CategoriesRFC');
   }
 }
