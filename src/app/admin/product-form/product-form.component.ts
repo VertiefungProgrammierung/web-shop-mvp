@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
   id;
   categories;
   public urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  product = { title: '', price: '', category: '', imageUrl: '' };
+  product;
 
   constructor(
     private router: Router,
@@ -60,7 +60,7 @@ delete() {
 }
 
   save() {
-     this.productService.create(this.product);
+    if (this.id) { this.productService.update(this.id, this.product); } else { this.productService.create(this.product); }
     this.router.navigate(['/admin/products']);
   }
 
