@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/web-shop-mvp",
+    "public": "dist/web-shop-sap-mvp",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -16,7 +16,7 @@ export class ProductService {
    }
 
   create(product) {
-    return this.httpClient.post<Product>('https://webshopsapp2002529677trial.hanatrial.ondemand.com/WebShopSap/ProductsRFC', product);
+    return this.db.list('/products').push(product);
   }
 
   getAll() {
